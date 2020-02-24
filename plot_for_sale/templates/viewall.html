@@ -1,0 +1,50 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+<body>
+<center>
+    {% include 'head.html' %}
+    {% include 'menu.html' %}
+    <br>
+    <br>
+       <br>
+    <br>
+    <br>
+    <table align="center" border="2">
+        <tr>
+            <th>PLOTNO</th>
+            <th>ROAD NO</th>
+            <th>SURVEY NO</th>
+            <th>COSTPERSQRYD</th>
+            <th>OTHEREXPENSE</th>
+            <th>BOUNDRIES</th>
+            <th>FACING</th>
+            <th>STATUS</th>
+            <th>TOTALCOST</th>
+            <th>IMAGE</th>
+        </tr>
+        {% for x in plotdata %}
+            <tr>
+            <th>{{ x.plotno }}</th>
+                <th>{{ x.road_no }}</th>
+             <th>{{ x.survey_no }}</th>
+             <th>{{ x.cost_persqryrd }}</th>
+             <th>{{ x.otherexpense }}</th>
+             <th>{{ x.boundry }}</th>
+             <th>{{ x.facing }}</th>
+             <th>{{ x.status }}</th>
+             <th>{{ x.total_cost }}</th>
+             <th><img src="{{ x.property_image.url }}" height="100" width="100"></th>
+
+            </tr>
+        {% endfor %}
+    </table>
+
+
+
+
+</center>
+</body>
+</html>

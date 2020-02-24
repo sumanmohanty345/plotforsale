@@ -1,0 +1,50 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+<body>
+<center>
+    {% include 'head.html' %}
+    {% include 'menu.html' %}
+    <br>
+    <br>
+       <br>
+    <br>
+    <br>
+    <table align="center" border="2">
+        <tr>
+            <th>APARTMENT NO</th>
+            <th>SURVEY NO</th>
+            <th>ROAD NO</th>
+            <th>COSTPERBHK</th>
+            <th>OTHEREXPENSE</th>
+            <th>BHK</th>
+            <th>FACING</th>
+            <th>STATUS</th>
+            <th>TOTALCOST</th>
+            <th>IMAGE</th>
+        </tr>
+        {% for x in aptdata %}
+            <tr>
+            <th>{{ x.Appartmentno}}</th>
+             <th>{{ x.survey_no }}</th>
+                <th>{{ x.road_no }}</th>
+             <th>{{ x.cost_perbhk }}</th>
+             <th>{{ x.otherexpense }}</th>
+             <th>{{ x.BHK }}</th>
+             <th>{{ x.facing }}</th>
+             <th>{{ x.status }}</th>
+             <th>{{ x.totalcost }}</th>
+             <th><img src="{{ x.Appartment_image.url}}" height="100" width="100"></th>
+
+            </tr>
+        {% endfor %}
+    </table>
+
+
+
+
+</center>
+</body>
+</html>

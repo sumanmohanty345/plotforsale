@@ -1,0 +1,109 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+<center>
+    {% include 'head.html' %}
+    {% include 'menu.html' %}
+    <br>
+    <br>
+       <br>
+    <br>
+    <br>
+    {% if data %}
+     <form action="/updateatmpt/" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+    <table align="center" >
+        <tr>
+            <th>APPARTMENT NO</th>
+            <th><input type="number" value="{{ data.Appartmentno }}" name="pno"  required></th>
+        </tr>
+
+
+         <tr>
+            <th>ROAD NO</th>
+            <th><input type="number" value="{{ data.road_no }}" name="rdno" required></th>
+        </tr>
+
+         <tr>
+            <th>SURVEY NO</th>
+            <th><input type="number" value="{{ data.survey_no}}" name="srno" required></th>
+        </tr>
+
+
+         <tr>
+            <th>COSTPER BHK</th>
+            <th><input type="number" value="{{ data.cost_perbhk }}"name="cqspo" required></th>
+        </tr>
+
+
+         <tr>
+            <th>OTHER EXPENSE</th>
+            <th><input type="number"value="{{ data.otherexpense }}" name="oexp" required></th>
+        </tr>
+
+         <tr>
+            <th>BHK</th>
+            <th><input type="number" value="{{ data.BHK }}" name="bnds" required></th>
+        </tr>
+
+        <tr>
+            <th>FACING</th>
+            <th>
+                <select name="fac" >
+                     <option value="{{ data.facing }}">{{ data.facing }}</option>
+                    <option value="east">EAST</option>
+                    <option value="west">WEST</option>
+                    <option value="SOUTH">SOUTH</option>
+                    <option value="north">NORTH</option>
+                </select>
+            </th>
+        </tr>
+
+
+        <tr>
+            <th>STATUS</th>
+            <th><input type="text" value="{{ data.status }}" name="sts" required></th>
+        </tr>
+
+        <tr>
+            <th>TOTAL COST</th>
+            <th><input type="number" value="{{ data.totalcost }}" name="tct" required></th>
+        </tr>
+         <tr>
+            <th>APPARTMENT IMAGE</th>
+            <th><input type="file"  name="pimg"  value="{{ data.Appartment_image.url }}" required></th>
+           <th><img src="{{ data.Appartment_image.url }}" height="120" width="120"></th>
+         </tr>
+
+        <tr>
+            <th> <button type="submit" class="btn btn-primary">Submit</button></th>
+        </tr>
+
+
+    </table>
+    </form>
+
+
+
+    {% else %}
+    <form action="/serchaptmpt/" method="post">
+        {% csrf_token %}
+        <table align="center">
+            <tr>
+                <td>EnterApartmentno-</td>
+                <td><input type="number" name="plotno" REQUIRED placeholder="APPARTMENTTNO"></td>
+            </tr>
+
+        <tr>
+            <th> <button type="submit" class="btn btn-primary">Submit</button></th>
+        </tr>
+
+        </table>
+    </form>
+{% endif %}
+
+</center>
+</html>

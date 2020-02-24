@@ -1,0 +1,104 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+<center>
+    {% include 'head.html' %}
+    {% include 'menu.html' %}
+    <br>
+    <br>
+       <br>
+    <br>
+    <br>
+    {% if data %}
+     <form action="/updateplot/" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+    <table align="center" >
+        <tr>
+            <th>PLOT NO</th>
+            <th><input type="number" PLACEHOLDER="PLOTNO" name="pno" required value="{{ data.plotno }}" readonly ></th>
+        </tr>
+
+
+         <tr>
+            <th>ROAD NO</th>
+            <th><input type="number"  name="rdno" value="{{ data.road_no }}"   required></th>
+        </tr>
+
+         <tr>
+            <th>SURVEY NO</th>
+            <th><input type="number"  name="srno" value="{{ data.survey_no }}" required></th>
+        </tr>
+
+
+         <tr>
+            <th>COSTPER SQR</th>
+            <th><input type="number" value="{{ data.cost_persqryrd }}" name="cqspo" required></th>
+        </tr>
+
+
+         <tr>
+            <th>OTHER EXPENSE</th>
+            <th><input type="number" value="{{ data.otherexpense }}" name="oexp" required></th>
+        </tr>
+
+         <tr>
+            <th>BOUNDRIES</th>
+            <th><input type="number" value="{{ data.boundry }}" name="bnds" required></th>
+        </tr>
+
+        <tr>
+            <th>FACING</th>
+            <th>
+                <input type="text" name="fac" value="{{ data.facing }}">
+
+            </th>
+        </tr>
+
+
+        <tr>
+            <th>STATUS</th>
+            <th><input type="text" value="{{ data.status }}" name="sts" required></th>
+        </tr>
+
+        <tr>
+            <th>TOTAL COST</th>
+            <th><input type="number" value="{{ data.total_cost }}" name="tct" required></th>
+        </tr>
+         <tr>
+            <th>PROPERTY IMAGE</th>
+             <th><input type="file" name="pimg" value="{{ data.property_image }}"></th>
+            <th><img src="{{ data.property_image.url }}" height="120" width="120"></th>
+        </tr>
+
+        <tr>
+            <th> <button type="submit" class="btn btn-primary">Submit</button></th>
+        </tr>
+
+
+    </table>
+    </form>
+
+
+
+    {% else %}
+    <form action="/serchplot/" method="post">
+        {% csrf_token %}
+        <table align="center">
+            <tr>
+                <td>EnterPlotno-</td>
+                <td><input type="number" name="plotno" REQUIRED placeholder="ENTERPLOTNO"></td>
+            </tr>
+
+        <tr>
+            <th> <button type="submit" class="btn btn-primary">Submit</button></th>
+        </tr>
+
+        </table>
+    </form>
+
+    {% endif %}
+</center>
+</html>
